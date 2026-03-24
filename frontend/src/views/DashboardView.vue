@@ -10,17 +10,17 @@
       <div class="balance-main">
         <span class="balance-label">ยอดเงินคงเหลือสุทธิ</span>
         <span class="balance-value" :class="summary.currentBalance >= 0 ? 'text-success' : 'text-danger'">
-          {{ parseFloat(summary.currentBalance).toLocaleString('th-TH', {minimumFractionDigits: 2}) }} ฿
+          {{ Number(summary.currentBalance).toLocaleString('th-TH', {minimumFractionDigits: 2}) }} ฿
         </span>
       </div>
       <div class="balance-details">
         <div class="detail-box income-box">
           <span class="box-label">รายรับรวม</span>
-          <span class="box-val">+{{ parseFloat(summary.totalIncome).toLocaleString('th-TH', {minimumFractionDigits: 2}) }} ฿</span>
+          <span class="box-val">+{{ Number(summary.totalIncome).toLocaleString('th-TH', {minimumFractionDigits: 2}) }} ฿</span>
         </div>
         <div class="detail-box expense-box">
           <span class="box-label">รายจ่ายรวม</span>
-          <span class="box-val">-{{ parseFloat(summary.totalExpense).toLocaleString('th-TH', {minimumFractionDigits: 2}) }} ฿</span>
+          <span class="box-val">-{{ Number(summary.totalExpense).toLocaleString('th-TH', {minimumFractionDigits: 2}) }} ฿</span>
         </div>
       </div>
     </div>

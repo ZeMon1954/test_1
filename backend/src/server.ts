@@ -23,8 +23,9 @@ app.use('/transaction', transactionRoutes);
 app.use('/api/categories', categoryRoutes);
 
 // เริ่มรันเซิร์ฟเวอร์
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 
     // เริ่มอ่านอีเมลเมื่อ server พร้อม
     startEmailReader();
