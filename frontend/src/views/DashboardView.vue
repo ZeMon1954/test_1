@@ -140,12 +140,12 @@ const goToPage = (page: number) => {
 
 onMounted(async () => {
   try {
-    const summaryRes = await fetch("http://localhost:3000/transaction/summary");
+    const summaryRes = await fetch(`${import.meta.env.VITE_API_URL}/transaction/summary`);
     if (summaryRes.ok) {
       summary.value = await summaryRes.json();
     }
     
-    const res = await fetch("http://localhost:3000/transaction");
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/transaction`);
     if (res.ok) {
       transactions.value = await res.json();
     }

@@ -73,8 +73,8 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import '@/assets/styles/category-mapping.css'
 
-const API_CATEGORIES = 'http://localhost:3000/api/categories'
-const API_TRANSACTIONS = 'http://localhost:3000/transaction'
+const API_CATEGORIES = `${import.meta.env.VITE_API_URL}/api/categories`
+const API_TRANSACTIONS = `${import.meta.env.VITE_API_URL}/transaction`
 
 const uncategorized = ref<any[]>([])
 const fetching = ref(false)

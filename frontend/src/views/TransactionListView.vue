@@ -161,7 +161,7 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import '@/assets/styles/category-mapping.css'
 
-const API_URL = 'http://localhost:3000/transaction'
+const API_URL = import.meta.env.VITE_API_URL + '/transaction'
 
 const transactions = ref<any[]>([])
 const fetching = ref(false)

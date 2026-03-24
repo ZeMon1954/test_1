@@ -61,7 +61,7 @@ const handleRegister = async () => {
 
   try {
     const response = await axios.post<RegisterResponse>(
-      'http://localhost:3000/register', 
+      `${import.meta.env.VITE_API_URL}/register`, 
       form.value
     );
     
