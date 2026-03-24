@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model users {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  password    String
+  name        String?
+  initialBalance Float      @default(93.34)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  // 🟢 เพิ่มบรรทัดนี้: เพื่อบอกว่า user 1 คน มีได้หลาย Transaction
+  transactions Transaction[] 
+  
+  // 🟢 เพิ่มบรรทัดนี้: เพื่อบอกว่า user 1 คน มีได้หลาย CategoryMapping
+  categoryMappings CategoryMapping[]
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  rawEmail    String
+  amount      Float? 
+  type        String?
+  bank        String?
+  createdAt   DateTime @default(now())
+  category    String?  @default("uncategorized") 
+  description String?
+  
+  userId      Int?
+  user        users?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // เพิ่ม field สำหรับเก็บชื่อที่ใช้ match
+  keyword     String?
+}
+
+model CategoryMapping {
+  id          Int      @id @default(autoincrement())
+  keyword     String   // เช่น "นาย ธีรภัทร", "SHOPEEPAY", "NETFLIX"
+  category    String   // เช่น "บันเทิง", "ช้อปปิ้ง"
+  userId      Int
+  user        users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, keyword]) // ผู้ใช้ 1 คนมี keyword ซ้ำไม่ได้
+}

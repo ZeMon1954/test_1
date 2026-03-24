@@ -1,0 +1,74 @@
+/* ==========================================
+   👨‍💻 HACKER NAVBAR STYLES
+   ========================================== */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+  background: var(--hack-bg-card);
+  border-bottom: 2px solid var(--hack-border-dim);
+  position: relative;
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--hack-primary);
+  box-shadow: 0 0 10px var(--hack-primary-glow);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--hack-text-muted);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 20px 30px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar a::before {
+  content: '>_';
+  position: absolute;
+  left: 10px;
+  opacity: 0;
+  color: var(--hack-primary);
+  transition: 0.2s;
+}
+
+.navbar a:hover {
+  color: var(--hack-text);
+  background: rgba(0, 255, 65, 0.05);
+  text-shadow: 0 0 5px var(--hack-primary-glow);
+}
+
+.navbar a:hover::before {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.navbar a.router-link-active {
+  color: var(--hack-primary);
+  text-shadow: 0 0 8px var(--hack-primary-glow);
+  background: rgba(0, 255, 65, 0.1);
+}
+
+.navbar a.router-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--hack-primary);
+  box-shadow: 0 -2px 10px var(--hack-primary-glow);
+}

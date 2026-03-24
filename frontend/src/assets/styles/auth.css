@@ -1,0 +1,231 @@
+/* ==========================================
+   🎮 VALORANT AUTH FORM STYLES
+   ========================================== */
+
+.auth-container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 40px 35px;
+  background: var(--val-card);
+  border: 1px solid var(--val-card-border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  animation: card-appear 0.6s ease-out;
+}
+
+/* Red accent line on top */
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--val-red), transparent);
+  animation: glow-line 3s ease-in-out infinite;
+}
+
+/* Corner decorations */
+.auth-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-right: 2px solid var(--val-red);
+  border-bottom: 2px solid var(--val-red);
+  opacity: 0.3;
+}
+
+@keyframes card-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-line {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Title */
+.auth-container h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--val-white);
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 0 0 20px var(--val-red-glow);
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--val-text-muted);
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(10, 17, 24, 0.8);
+  border: 1px solid rgba(255, 70, 85, 0.15);
+  border-radius: 2px;
+  color: var(--val-white);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: var(--val-red);
+  box-shadow: 0 0 15px rgba(255, 70, 85, 0.15), inset 0 0 15px rgba(255, 70, 85, 0.05);
+}
+
+.form-group input::placeholder {
+  color: rgba(118, 128, 121, 0.5);
+}
+
+/* Submit button */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, var(--val-red), var(--val-red-dark));
+  border: none;
+  border-radius: 2px;
+  color: var(--val-white);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 25px var(--val-red-glow);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Button shine effect */
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 60%
+  );
+  animation: btn-shine 3s ease-in-out infinite;
+}
+
+@keyframes btn-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Messages */
+.msg-success {
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(23, 232, 194, 0.1);
+  border-left: 3px solid var(--val-cyan);
+  color: var(--val-cyan);
+  font-weight: 600;
+  font-size: 0.95rem;
+  animation: msg-in 0.3s ease-out;
+}
+
+.msg-error {
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(255, 70, 85, 0.1);
+  border-left: 3px solid var(--val-red);
+  color: var(--val-red);
+  font-weight: 600;
+  font-size: 0.95rem;
+  animation: msg-in 0.3s ease-out;
+}
+
+@keyframes msg-in {
+  0% { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Switch page link */
+.switch-page {
+  margin-top: 25px;
+  text-align: center;
+  color: var(--val-text-muted);
+  font-size: 0.95rem;
+}
+
+.switch-page a {
+  color: var(--val-red);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.switch-page a:hover {
+  color: var(--val-white);
+  text-shadow: 0 0 15px var(--val-red-glow);
+}
+
+.switch-page a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--val-red);
+  transition: width 0.3s ease;
+}
+
+.switch-page a:hover::after {
+  width: 100%;
+}
